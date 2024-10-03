@@ -10,7 +10,7 @@ FROM
 JOIN 
     countries c ON e.country = c.country
 WHERE 
-    e.year BETWEEN 2015 AND 2017
+    e.year BETWEEN 2010 AND 2012
     AND e.GDP IS NOT NULL 
     AND e.GINI IS NOT NULL 
     AND c.population IS NOT NULL
