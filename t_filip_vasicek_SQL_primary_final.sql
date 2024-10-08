@@ -27,7 +27,11 @@ JOIN
 JOIN 
     czechia_district d ON r.code = LEFT(d.code, 5)
 WHERE 
-    p.payroll_year IS NOT NULL 
+    p.payroll_year IN (
+        SELECT DISTINCT YEAR(cp.date_from)
+        FROM czechia_price cp
+        WHERE YEAR(cp.date_from) IN (SELECT DISTINCT payroll_year FROM czechia_payroll)
+    )
+    AND p.payroll_year IS NOT NULL 
     AND cp.date_from IS NOT NULL 
-    AND p.value IS NOT NULL
-    AND p.payroll_year BETWEEN 2010 AND 2012;
+    AND p.value IS NOT NULL;
