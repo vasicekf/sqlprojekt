@@ -21,6 +21,6 @@ WHERE
     e.GDP IS NOT NULL 
     AND e.gini IS NOT NULL 
     AND c.population IS NOT NULL
-    AND c.country IN ('Czech Republic', 'Slovakia', 'Poland', 'Germany', 'Austria', 'Hungary', 'Croatia', 'Serbia', 'Norway')
+    AND c.continent = 'Europe'
 GROUP BY 
     c.country, e.year;
